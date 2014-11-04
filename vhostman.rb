@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 HOSTS = "/etc/hosts"
-VHOSTSDIR = "/etc/apache2/extra/vhosts/" # needs trailing slash
+VHOSTSDIR = "/etc/apache2/sites-enabled/" # needs trailing slash
 
 def usage
   puts "\tUSAGE: sudo vhostman add [name] [webroot path]"
@@ -64,7 +64,7 @@ def make_vhost
     f.puts "  Order allow,deny"
     f.puts "  Allow from all"
     f.puts "</Directory>"
-    f.puts "<VirtualHost *:80>"
+    f.puts "<VirtualHost *:8080>"
     f.puts "  DocumentRoot \"#{@path}\""
     f.puts "  ServerName #{@domain}"
     f.puts "</VirtualHost>"
